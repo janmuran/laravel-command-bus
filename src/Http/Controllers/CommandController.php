@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Janmuran\LaravelCommandBus\Http\Controllers\Command;
+namespace Janmuran\LaravelCommandBus\Http\Controllers;
 
 use Janmuran\LaravelCommandBus\CommandBusInterface;
 use Janmuran\LaravelCommandBus\CommandStorageInterface;

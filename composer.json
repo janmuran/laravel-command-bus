@@ -1,0 +1,47 @@
+{
+  "name": "janmuran/laravel-command-bus",
+  "description": "Laravel command bus",
+  "keywords": [
+    "command-bus"
+  ],
+  "homepage": "https://github.com/janmuran/laravel-command-bus",
+  "authors": [
+    {
+      "name": "Jan Muran",
+      "email": "muran@muran.at",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": "^8.0",
+    "ext-json": "*",
+    "illuminate/bus": "^9.0|^10.0",
+    "illuminate/http": "^9.0|^10.0",
+    "jms/serializer": "^3.22"
+  },
+  "require-dev": {
+    "mockery/mockery": "^1.4",
+    "friendsofphp/php-cs-fixer": "^3.53",
+    "phpstan/phpstan": "^1.10",
+    "phpmd/phpmd": "^2.15"
+  },
+  "autoload": {
+    "psr-4": {
+      "Janmuran\\LaravelCommandBus\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Janmuran\\LaravelCommandBus\\Tests\\": "tests"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Janmuran\\LaravelCommandBus\\CommandBusServiceProvider"
+      ]
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}

@@ -12,7 +12,9 @@ class CommandBusServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        $commandBus = resolve(CommandBus::class);
+        $this->registerServices();
+
+        $commandBus = resolve(CommandBusInterface::class);
 
         $commandBus->map([
         ]);
@@ -20,7 +22,6 @@ class CommandBusServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        $this->registerServices();
         $this->registerControllers();
     }
 

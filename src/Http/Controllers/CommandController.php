@@ -24,7 +24,7 @@ class CommandController
     ) {
     }
 
-    public function __invoke(Request $request): JsonResponse
+    public function index(Request $request): JsonResponse
     {
         $data = $request->all();
         try {

@@ -3,7 +3,7 @@
 namespace Janmuran\LaravelCommandBus;
 
 use Illuminate\Support\Facades\Route;
-use Janmuran\LaravelCommandBus\Http\Controllers\Command\CommandController;
+use Janmuran\LaravelCommandBus\Http\Controllers\CommandController;
 use Janmuran\LaravelCommandBus\Response\ResponseStorage;
 use Janmuran\LaravelCommandBus\Response\ResponseStorageInterface;
 use Illuminate\Support\ServiceProvider;

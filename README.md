@@ -15,4 +15,5 @@ Simple command bus for laravel. Use jms serializer for build command.
         $commandBus = resolve(CommandBusInterface::class);
 
         $commandBus->map([
+            CommandExample::class => CommandExampleHandler::class,
         ]);

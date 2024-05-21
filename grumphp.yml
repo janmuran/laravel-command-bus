@@ -1,0 +1,21 @@
+grumphp:
+  stop_on_failure: false
+  process_timeout: 600
+  tasks:
+    phpcs:
+      standard: 'phpcs.ruleset.xml'
+      tab_width: 4
+      whitelist_patterns: []
+      encoding: utf-8
+      ignore_patterns: []
+      sniffs: []
+      triggered_by: [php]
+    phpmd:
+      ruleset: ['phpmd.ruleset.xml']
+    phpstan:
+      autoload_file: ~
+      configuration: 'phpstan.neon'
+      level: 7
+      ignore_patterns: []
+      triggered_by: ['php']
+    phpversion: ~

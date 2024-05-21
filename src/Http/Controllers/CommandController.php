@@ -12,6 +12,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use JMS\Serializer\SerializerInterface;
+use RuntimeException;
 use Throwable;
 
 class CommandController
@@ -30,7 +31,12 @@ class CommandController
         try {
             /** @var class-string $class */
             $class = $this->commandStorage->getCommandClass($data['command']);
-            $command = $this->serializer->deserialize(json_encode($data['params']), $class, 'json');
+            $json = json_encode($data['params']);
+            if ($json === false) {
+                throw new RuntimeException('Unable encode command data');
+            }
+
+            $command = $this->serializer->deserialize($json, $class, 'json');
             $this->bus->dispatch($command);
         } catch (Throwable $exception) {
             return $this->createErrorJsonResponseFromException($exception);
@@ -39,6 +45,9 @@ class CommandController
         return $this->createSuccessJsonResponse($this->responseStorage->getResponse());
     }
 
+    /**
+     * @param array<mixed> $params
+     */
     private function createSuccessJsonResponse(array $params = []): JsonResponse
     {
         $data = ['status' => 'ok'];

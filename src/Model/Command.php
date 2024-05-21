@@ -6,5 +6,4 @@ namespace Janmuran\LaravelCommandBus\Model;
 
 interface Command
 {
-
 }

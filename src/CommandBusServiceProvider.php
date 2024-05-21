@@ -14,21 +14,22 @@ class CommandBusServiceProvider extends ServiceProvider
     {
         $this->registerServices();
 
-        $commandBus = resolve(CommandBusInterface::class);
+        $commandBus = resolve(CommandBusInterface::class); // @phpstan-ignore-line
 
         $commandBus->map([
         ]);
     }
 
-    public function boot()
+    public function boot(): void
     {
         $this->registerControllers();
     }
 
     private function registerControllers(): void
     {
+        // @phpstan-ignore-next-line
         Route::post("command/run", '\\' . CommandController::class)
-            ->name('commmand-bus-run-command');
+            ->name('commmand-bus-run-command'); // @phpstan-ignore-line
     }
 
     private function registerServices(): void

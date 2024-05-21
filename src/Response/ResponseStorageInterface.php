@@ -8,5 +8,5 @@ interface ResponseStorageInterface
 {
     public function getResponse(): mixed;
 
-     public function setResponse(mixed $response): void;
+    public function setResponse(mixed $response): void;
 }

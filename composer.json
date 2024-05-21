@@ -23,7 +23,9 @@
     "mockery/mockery": "^1.4",
     "friendsofphp/php-cs-fixer": "^3.53",
     "phpstan/phpstan": "^1.10",
-    "phpmd/phpmd": "^2.15"
+    "phpmd/phpmd": "^2.15",
+    "phpro/grumphp": "^2.5",
+    "squizlabs/php_codesniffer": "^3.10"
   },
   "autoload": {
     "psr-4": {
@@ -43,5 +45,10 @@
     }
   },
   "minimum-stability": "dev",
-  "prefer-stable": true
+  "prefer-stable": true,
+  "config": {
+    "allow-plugins": {
+      "phpro/grumphp": true
+    }
+  }
 }

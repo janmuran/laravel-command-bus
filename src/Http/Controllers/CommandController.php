@@ -5,8 +5,7 @@ declare(strict_types=1);
 namespace Janmuran\LaravelCommandBus\Http\Controllers;
 
 use Janmuran\LaravelCommandBus\CommandBus;
-use Janmuran\LaravelCommandBus\CommandStorage;
-use Janmuran\LaravelCommandBus\Response\ResponseStorage;
+use Janmuran\LaravelCommandBus\CommandStorageInterface;
 use Janmuran\LaravelCommandBus\Response\ResponseStorageInterface;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -20,8 +19,8 @@ class CommandController
     public function __construct(
         private readonly SerializerInterface $serializer,
         private readonly CommandBus $bus,
-        private readonly CommandStorage $commandStorage,
-        private readonly ResponseStorage $responseStorage,
+        private readonly CommandStorageInterface $commandStorage,
+        private readonly ResponseStorageInterface $responseStorage,
     ) {
     }
 

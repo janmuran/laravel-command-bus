@@ -19,3 +19,4 @@ grumphp:
       ignore_patterns: []
       triggered_by: ['php']
     phpversion: ~
+    phpunit: ~

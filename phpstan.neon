@@ -2,3 +2,5 @@ parameters:
     level: max
     checkGenericClassInNonGenericObjectType: false
     reportUnmatchedIgnoredErrors: false
+    excludePaths:
+        - 'tests/*'

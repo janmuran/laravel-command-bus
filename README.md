@@ -19,3 +19,21 @@ Add this lines to AppServiceProvider.php
         $commandBus->map([
             CommandExample::class => CommandExampleHandler::class,
         ]);
+
+
+### Validation data
+
+request can be validated in Command handler.  
+If you require all errors in response array use ValidationException 
+
+
+        $validation = \Illuminate\Support\Facades\Validator::make(
+                $data,
+                [
+                    'age' => 'require|min:20',
+                ],
+        ); 
+
+        if ($validation->fails()) {
+            throw ValidationException::create($validation->errors()->toArray());
+        }

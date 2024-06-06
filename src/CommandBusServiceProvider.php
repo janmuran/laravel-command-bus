@@ -7,6 +7,10 @@ use Janmuran\LaravelCommandBus\Http\Controllers\CommandController;
 use Janmuran\LaravelCommandBus\Response\ResponseStorage;
 use Janmuran\LaravelCommandBus\Response\ResponseStorageInterface;
 use Illuminate\Support\ServiceProvider;
+use JMS\Serializer\ArrayTransformerInterface;
+use JMS\Serializer\Serializer;
+use JMS\Serializer\SerializerBuilder;
+use JMS\Serializer\SerializerInterface;
 
 class CommandBusServiceProvider extends ServiceProvider
 {
@@ -14,10 +18,10 @@ class CommandBusServiceProvider extends ServiceProvider
     {
         $this->registerServices();
 
+        /** @var CommandBusInterface $commandBus */
         $commandBus = resolve(CommandBusInterface::class); // @phpstan-ignore-line
 
-        $commandBus->map([
-        ]);
+        $commandBus->map([]);
     }
 
     public function boot(): void
@@ -34,6 +38,14 @@ class CommandBusServiceProvider extends ServiceProvider
 
     private function registerServices(): void
     {
+        $this->app->singleton(Serializer::class, function (): Serializer {
+            return SerializerBuilder::create()
+                ->build();
+        });
+
+        $this->app->bind(SerializerInterface::class, Serializer::class);
+        $this->app->bind(ArrayTransformerInterface::class, Serializer::class);
+
         $this->app->singleton(
             abstract: CommandBusInterface::class,
             concrete: CommandBus::class,

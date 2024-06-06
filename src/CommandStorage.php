@@ -17,6 +17,7 @@ final class CommandStorage implements CommandStorageInterface
     }
 
     /**
+     * @SuppressWarnings(PHPMD.UnusedLocalVariable)
      * @param array<class-string, class-string> $commands
      */
     public function addCommands(array $commands): void

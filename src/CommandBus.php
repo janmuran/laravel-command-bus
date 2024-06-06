@@ -11,7 +11,7 @@ final class CommandBus implements CommandBusInterface
 {
     public function __construct(
         private readonly Dispatcher $bus,
-        private CommandStorage $commandStorage,
+        private CommandStorageInterface $commandStorage,
     ) {
     }
 

@@ -1,9 +1,11 @@
 {
   "name": "janmuran/laravel-command-bus",
-  "description": "Laravel command bus",
+  "description": "Laravel command bus with automatic build command object from json request",
   "keywords": [
-    "command-bus"
+    "command-bus",
+    "laravel"
   ],
+  "license": "MIT",
   "homepage": "https://github.com/janmuran/laravel-command-bus",
   "authors": [
     {

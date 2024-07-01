@@ -13,11 +13,17 @@ interface CommandStorageInterface
 
     /**
      * @param class-string $command
+     * @param class-string $handler
      */
-    public function addCommand(string $commandName, string $command): void;
+    public function addCommand(string $command, string $handler): void;
 
     /**
      * @return class-string
      */
     public function getCommandClass(string $commandName): string;
+
+    /**
+     * @return array<string, class-string>
+     */
+    public function getCommands(): array;
 }

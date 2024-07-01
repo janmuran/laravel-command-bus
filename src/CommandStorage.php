@@ -23,15 +23,17 @@ final class CommandStorage implements CommandStorageInterface
     public function addCommands(array $commands): void
     {
         foreach ($commands as $command => $handler) {
-            $this->addCommand($this->getClassShortName($command), $command);
+            $this->addCommand($command, $handler);
         }
     }
 
     /**
      * @param class-string $command
+     * @param class-string $handler
      */
-    public function addCommand(string $commandName, string $command): void
+    public function addCommand(string $command, string $handler): void
     {
+        $commandName = $this->getClassShortName($command);
         $this->commands[$commandName] = $command;
     }
 
@@ -55,5 +57,13 @@ final class CommandStorage implements CommandStorageInterface
         $path = explode('\\', $command);
 
         return array_pop($path);
+    }
+
+    /**
+     * @return array<string, class-string>
+     */
+    public function getCommands(): array
+    {
+        return $this->commands;
     }
 }

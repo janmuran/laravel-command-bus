@@ -47,6 +47,11 @@ class CommandBusServiceProvider extends ServiceProvider
         $this->app->bind(ArrayTransformerInterface::class, Serializer::class);
 
         $this->app->singleton(
+            abstract: CommandBuilderInterface::class,
+            concrete: CommandBuilder::class,
+        );
+
+        $this->app->singleton(
             abstract: CommandBusInterface::class,
             concrete: CommandBus::class,
         );

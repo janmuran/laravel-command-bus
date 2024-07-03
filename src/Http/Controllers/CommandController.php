@@ -8,7 +8,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Janmuran\LaravelCommandBus\CommandBuilderInterface;
-use Janmuran\LaravelCommandBus\CommandBus;
+use Janmuran\LaravelCommandBus\CommandBusInterface;
 use Janmuran\LaravelCommandBus\Exception\ValidationException;
 use Janmuran\LaravelCommandBus\Response\ResponseStorageInterface;
 use Throwable;
@@ -16,7 +16,7 @@ use Throwable;
 class CommandController
 {
     public function __construct(
-        private readonly CommandBus $bus,
+        private readonly CommandBusInterface $bus,
         private readonly ResponseStorageInterface $responseStorage,
         private readonly CommandBuilderInterface $commandBuilder,
     ) {

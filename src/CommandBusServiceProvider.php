@@ -2,8 +2,10 @@
 
 namespace Janmuran\LaravelCommandBus;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Route;
 use Janmuran\LaravelCommandBus\Http\Controllers\CommandController;
+use Janmuran\LaravelCommandBus\Http\Controllers\CommandFormController;
 use Janmuran\LaravelCommandBus\Response\ResponseStorage;
 use Janmuran\LaravelCommandBus\Response\ResponseStorageInterface;
 use Illuminate\Support\ServiceProvider;
@@ -34,6 +36,9 @@ class CommandBusServiceProvider extends ServiceProvider
         // @phpstan-ignore-next-line
         Route::post("command/run", '\\' . CommandController::class)
             ->name('commmand-bus-run-command'); // @phpstan-ignore-line
+        // @phpstan-ignore-next-line
+        Route::post("command/form/run", '\\' . CommandFormController::class)
+            ->name('commmand-bus-form-run-command'); // @phpstan-ignore-line
     }
 
     private function registerServices(): void

@@ -5,12 +5,11 @@ declare(strict_types=1);
 namespace Janmuran\LaravelCommandBus;
 
 use Janmuran\LaravelCommandBus\Model\Command;
-use Illuminate\Bus\Dispatcher;
 
 final class CommandBus implements CommandBusInterface
 {
     public function __construct(
-        private readonly Dispatcher $bus,
+        private readonly CommandDispatcher $bus,
         private CommandStorageInterface $commandStorage,
     ) {
     }
@@ -24,5 +23,16 @@ final class CommandBus implements CommandBusInterface
     {
         $this->bus->map($map);
         $this->commandStorage->addCommands($map);
+    }
+
+    /**
+     * @return class-string|null
+     */
+    public function getCommandHandler(string $command): ?string
+    {
+        /** @var class-string|null $handler */
+        $handler = $this->bus->getCommandHandler($command);
+
+        return $handler;
     }
 }

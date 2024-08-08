@@ -16,4 +16,9 @@ interface CommandBusInterface
      * @return void
      */
     public function map(array $map): void;
+
+    /**
+     * @return class-string|null
+     */
+    public function getCommandHandler(string $command): ?string;
 }

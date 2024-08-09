@@ -16,18 +16,18 @@ class ValidationException extends Exception
     /**
      * @param array<mixed> $errors
      */
-    public function __construct(array $errors)
+    public function __construct(array $errors, int $code = 400)
     {
         $this->errors = $errors;
-        parent::__construct('Validation error');
+        parent::__construct('Validation error', $code);
     }
 
     /**
      * @param array<mixed> $errors
      */
-    public static function create(array $errors): self
+    public static function create(array $errors, int $code = 400): self
     {
-        return new self($errors);
+        return new self($errors, $code);
     }
 
     /**

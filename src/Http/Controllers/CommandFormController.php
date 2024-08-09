@@ -24,7 +24,7 @@ final class CommandFormController
     }
 
     /** @phpstan-ignore-next-line */
-    public function formAction(Request $request)
+    public function __invoke(Request $request)
     {
         /** @var string|null $command */
         $command = $request->input('command');

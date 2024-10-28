@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Janmuran\LaravelCommandBus\CommandBuilderInterface;
 use Janmuran\LaravelCommandBus\CommandBusInterface;
+use Janmuran\LaravelCommandBus\Exception\HttpException;
 use Janmuran\LaravelCommandBus\Exception\ValidationException;
 use Janmuran\LaravelCommandBus\Response\ResponseStorageInterface;
 use Throwable;
@@ -59,7 +60,11 @@ class CommandController
     {
         $data = ['status' => 'error'];
         $data['error'] = $exception->getMessage();
+        $code = Response::HTTP_BAD_REQUEST;
+        if ($exception instanceof HttpException) {
+            $code = $exception->getCode();
+        }
 
-        return new JsonResponse($data, $exception->getCode());
+        return new JsonResponse($data, $code);
     }
 }

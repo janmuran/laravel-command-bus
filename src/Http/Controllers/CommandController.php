@@ -60,6 +60,6 @@ class CommandController
         $data = ['status' => 'error'];
         $data['error'] = $exception->getMessage();
 
-        return new JsonResponse($data, Response::HTTP_BAD_REQUEST);
+        return new JsonResponse($data, $exception->getCode());
     }
 }
